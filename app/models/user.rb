@@ -1,6 +1,6 @@
 require_relative '../../application'
 class User < ActiveRecord::Base
-  has_many :threads
+  has_many :topics
   has_many :comments
 
   validates_presence_of :email, :password

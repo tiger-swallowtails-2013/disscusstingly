@@ -1,14 +1,13 @@
 require_relative '../../application'
 
-class CreateTableComments < ActiveRecord::Migration
+class CreateTableTopics < ActiveRecord::Migration
   def change
-    create_table :comments do |t|
+    create_table :topics do |t|
+      t.string :title
       t.string :body
-      t.integer :topic_id
+      t.integer :comment_id
       t.integer :user_id
-
       t.timestamps
-
     end
   end
 end
