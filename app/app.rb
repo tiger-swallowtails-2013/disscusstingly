@@ -1,15 +1,20 @@
 require 'sinatra'
-# require_relative './models/thread'
 require_relative '../application'
 
-get '/new_thread' do
-  erb :new_thread
+get '/' do
+  @topics = Topic.all#.order('updated_at')
+  erb :home
 end
 
-post '/new_thread' do
-  thread = Thread.new
-  thread.title = params[:title]
-  thread.body = params[:body]
-  thread.save
+get '/new_topic' do
+  erb :new_topic
+end
+
+post '/new_topic' do
+  t = Topic.new
+  params.inspect
+  t.title = params[:title]
+  t.body = params[:body]
+  t.save
 end
 
