@@ -23,4 +23,3 @@ get '/:id' do
   @topic = Topic.find(params[:id])
   erb :topic
 end
-
