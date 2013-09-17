@@ -13,3 +13,8 @@ task "db:migrate" do
     ActiveRecord::Migration.verbose = true
     ActiveRecord::Migrator.migrate('db/migrate', ENV["VERSION"] ? ENV["VERSION"].to_i : nil )
 end
+
+desc 'Start IRB with application environment loaded'
+task "console" do
+  exec "irb -r./application"
+end
