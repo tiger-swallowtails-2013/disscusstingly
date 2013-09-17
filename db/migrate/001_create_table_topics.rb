@@ -5,8 +5,6 @@ class CreateTableTopics < ActiveRecord::Migration
     create_table :topics do |t|
       t.string :title
       t.string :body
-      t.integer :comment_id
-      t.integer :user_id
       t.timestamps
     end
   end
