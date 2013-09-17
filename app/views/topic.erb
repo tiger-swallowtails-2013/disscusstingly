@@ -1,0 +1,6 @@
+<% if @topic %>
+    <h2><%= @topic.title %></h2>
+    <p><%= @topic.body %></p>
+<% else %>
+  <p> Topic not found. </p>
+<% end %>
