@@ -5,6 +5,8 @@ class CreateTableTopics < ActiveRecord::Migration
     create_table :topics do |t|
       t.string :title
       t.string :body
+      t.belongs_to :user
+
       t.timestamps
     end
   end
