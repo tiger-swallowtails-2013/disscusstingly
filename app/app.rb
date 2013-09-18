@@ -8,9 +8,8 @@ get '/' do
 end
 
 post '/login' do
-  #authenticate user
-  #add to session
-  #redirect to home_page
+  login
+  redirect '/'
 end
 
 get '/signup' do
