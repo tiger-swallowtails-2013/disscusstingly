@@ -4,7 +4,10 @@
   <nav>
     <ul class="pull-right">
       <% if logged_in? %>
-        Welcome, <a href="/user/<%=current_user.id%>"><%=current_user.email%></a>. <a href="/logout">Log out?</a>
+        Welcome, <a href="/user/<%=current_user.id%>"><%=current_user.email%></a>. 
+        <form action='/logout' method='post'>
+            <input type='submit' value='Log out'/>
+        </form>
       <% else %>
         Have an account? <a href="/login">Log in</a> or <a href="/signup">Sign up</a>
       <% end %>
