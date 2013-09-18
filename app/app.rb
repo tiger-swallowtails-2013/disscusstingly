@@ -55,6 +55,7 @@ post '/topic/:id' do
   c = Comment.new
   c.body = params[:body]
   c.topic = Topic.find(params[:id])
+  c.author = current_user
   c.save
   redirect "/topic/#{params[:id]}"
 end
