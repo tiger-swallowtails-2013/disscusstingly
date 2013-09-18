@@ -28,3 +28,8 @@ desc "populate the test database with sample data"
 task "db:seed" do
   require APP_ROOT.join('db', 'seeds.rb')
 end
+
+desc "reset database"
+task "db:reset" do
+  exec "rake db:drop && rake db:create && rake db:migrate && rake db:seed"
+end
