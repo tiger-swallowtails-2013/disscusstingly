@@ -25,6 +25,10 @@ helpers do
     session[:user_id].nil? ? false : true
   end
 
+  def current_user
+    User.find_by_id(session[:user_id])
+  end
+
   #signup methods
   def signup
     u = User.new
