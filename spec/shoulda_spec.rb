@@ -1,6 +1,6 @@
 require 'rspec'
 require 'shoulda'
-require_relative '../application'
+require_relative '../config/application'
 
 describe User do
   it { should validate_presence_of(:password)}

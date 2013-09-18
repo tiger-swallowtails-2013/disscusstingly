@@ -1,5 +1,5 @@
 require 'rake'
-require_relative 'application'
+require_relative 'config/application'
 
 desc "create the database"
 task "db:create" do
