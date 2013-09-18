@@ -40,6 +40,7 @@ post '/new_topic' do
   t = Topic.new
   t.title = params[:title]
   t.body = params[:body]
+  t.author = current_user
   t.save
   redirect '/'
 end
