@@ -1,0 +1,11 @@
+<form action = '/new_topic'>
+  <input type = 'submit' value = 'Add something Disscuss{ting}'>
+</form>
+
+<% @topics.each do |topic| %>
+  <article>
+    <p>
+      <a href="/<%= topic.id %>"><%= topic.title %></a>
+    </p>
+  </article>
+<% end %>
