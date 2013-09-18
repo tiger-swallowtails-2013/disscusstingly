@@ -6,11 +6,13 @@
         COMMENT: <%= comment.body %>
       </p>
     <% end %>
-    <form method = "post">
-      <textarea rows = '4' cols = '40' name = 'body'></textarea>
+    <% if logged_in? %>
+      <form method = "post">
+        <textarea rows = '4' cols = '40' name = 'body'></textarea>
        <br>
        <input type = 'submit'>
       </form>
+    <% end %>
 <% else %>
   <p> Topic not found. </p>
 <% end %>
