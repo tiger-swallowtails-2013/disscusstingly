@@ -58,3 +58,8 @@ post '/topic/:id' do
   redirect "/topic/#{params[:id]}"
 end
 
+get '/user/:id' do
+  #show all posts and comments that belong to user_id
+  "User Page #{params[:id]}"
+end
+
