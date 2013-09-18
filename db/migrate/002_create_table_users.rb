@@ -1,4 +1,4 @@
-require_relative '../../config/application'
+#require_relative '../../config/application'
 
 class CreateTableUsers < ActiveRecord::Migration
   def change
