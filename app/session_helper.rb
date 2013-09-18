@@ -1,5 +1,6 @@
 helpers do
 
+  #login/logout methods
   def find_user
     @user = User.find_by_email(params[:email])
   end
@@ -18,6 +19,14 @@ helpers do
 
   def logout
     session[:user_id] = nil
+  end
+
+  #signup methods
+  def signup
+    u = User.new
+    u.email = params[:email]
+    u.password = params[:password]
+    u.save
   end
 
 end

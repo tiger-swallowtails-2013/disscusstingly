@@ -7,15 +7,23 @@ get '/' do
   erb :home
 end
 
+get '/login' do
+  #navbar or erb :login
+end
+
 post '/login' do
   login
   redirect '/'
 end
 
 get '/signup' do
-  #create a new user
-  #add to session
-  #redirect to home_page
+  #erb :signup
+end
+
+post '/signup' do
+  signup
+  login
+  redirect '/'
 end
 
 post '/logout' do
