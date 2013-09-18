@@ -1,5 +1,6 @@
 require 'sinatra'
 require_relative '../config/application'
+require_relative './session_helper'
 enable :sessions
 
 get '/' do
