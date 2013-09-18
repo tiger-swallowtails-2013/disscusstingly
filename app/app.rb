@@ -18,9 +18,9 @@ get '/signup' do
   #redirect to home_page
 end
 
-post '/signout' do
-  #sign user out
-  #redirect to home_page
+post '/logout' do
+  logout
+  redirect '/'
 end
 
 get '/new_topic' do

@@ -16,4 +16,8 @@ helpers do
     authenticate unless find_user.nil?
   end
 
+  def logout
+    session[:user_id] = nil
+  end
+
 end
