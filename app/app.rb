@@ -33,6 +33,7 @@ post '/logout' do
 end
 
 get '/new_topic' do
+  authenticate
   erb :new_topic
 end
 

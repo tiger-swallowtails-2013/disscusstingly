@@ -5,7 +5,7 @@ helpers do
     @user = User.find_by_email(params[:email])
   end
 
-  def authenticate
+  def check_password
      give_token if @user.password == params[:password]
   end
 
@@ -14,7 +14,7 @@ helpers do
   end
 
   def login
-    authenticate unless find_user.nil?
+    check_password unless find_user.nil?
   end
 
   def logout
@@ -27,6 +27,10 @@ helpers do
 
   def current_user
     User.find_by_id(session[:user_id])
+  end
+
+  def authenticate
+    redirect '/' unless logged_in?
   end
 
   #signup methods
