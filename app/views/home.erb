@@ -1,13 +1,13 @@
-<form action = '/new_topic'>
-  <input type = 'submit' value = 'Add something Disscuss{ting}'>
-</form>
+<% if logged_in? %>
+  <form action='/new_topic'>
+    <input type='submit' value='Add something Disscuss{ting}'>
+  </form>
+<% end %>
 
 <% @topics.each do |topic| %>
   <article>
     <p>
-      <a href="/topic/<%= topic.id %>"><%= topic.title %></a>
+      <a href="/topic/<%= topic.id %>"><%= topic.title %></a> [<%=topic.author.email %>]
     </p>
   </article>
 <% end %>
-
-<input type='submit' method='post' action='/logout' value='Logout'>
