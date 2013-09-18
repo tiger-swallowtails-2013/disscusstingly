@@ -5,7 +5,9 @@
 <% @topics.each do |topic| %>
   <article>
     <p>
-      <a href="/<%= topic.id %>"><%= topic.title %></a>
+      <a href="/topic/<%= topic.id %>"><%= topic.title %></a>
     </p>
   </article>
 <% end %>
+
+<input type='submit' method='post' action='/logout' value='Logout'>
