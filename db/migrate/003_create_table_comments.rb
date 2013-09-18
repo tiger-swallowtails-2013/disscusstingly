@@ -1,4 +1,4 @@
-require_relative '../../application'
+require_relative '../../config/application'
 
 class CreateTableComments < ActiveRecord::Migration
   def change
