@@ -21,6 +21,10 @@ helpers do
     session[:user_id] = nil
   end
 
+  def logged_in?
+    session[:user_id].nil? ? false : true
+  end
+
   #signup methods
   def signup
     u = User.new
