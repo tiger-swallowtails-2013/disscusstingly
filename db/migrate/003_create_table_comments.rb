@@ -4,11 +4,10 @@ class CreateTableComments < ActiveRecord::Migration
   def change
     create_table :comments do |t|
       t.string :body
-      t.integer :topic_id
-      t.integer :user_id
-
+      t.belongs_to :topic
+      t.belongs_to :user
+      
       t.timestamps
-
     end
   end
 end

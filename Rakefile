@@ -18,3 +18,13 @@ desc 'Start IRB with application environment loaded'
 task "console" do
   exec "irb -r./application"
 end
+
+desc "drop the database"
+task "db:drop" do
+  rm_f DB_PATH
+end
+
+desc "populate the test database with sample data"
+task "db:seed" do
+  require APP_ROOT.join('db', 'seeds.rb')
+end
