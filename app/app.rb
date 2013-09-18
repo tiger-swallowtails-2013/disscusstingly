@@ -32,3 +32,8 @@ post '/:id' do
   c.save
   redirect "/#{params[:id]}"
 end
+
+get '/login' do
+  erb :login
+end
+
