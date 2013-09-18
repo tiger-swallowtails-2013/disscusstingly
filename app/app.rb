@@ -1,5 +1,5 @@
 require 'sinatra'
-require_relative '../application'
+require_relative '../config/application'
 enable :sessions
 
 get '/' do
@@ -8,7 +8,7 @@ get '/' do
 end
 
 get '/login' do
-  #navbar or erb :login
+  erb :login
 end
 
 post '/login' do
@@ -17,7 +17,7 @@ post '/login' do
 end
 
 get '/signup' do
-  #erb :signup
+  erb :signup
 end
 
 post '/signup' do
@@ -43,16 +43,17 @@ post '/new_topic' do
   redirect '/'
 end
 
-get '/:id' do
+get '/topic/:id' do
   @topic = Topic.find(params[:id])
   @comments = @topic.comments
   erb :topic
 end
 
-post '/:id' do
+post '/topic/:id' do
   c = Comment.new
   c.body = params[:body]
   c.topic = Topic.find(params[:id])
   c.save
-  redirect "/#{params[:id]}"
+  redirect "/topic/#{params[:id]}"
 end
+

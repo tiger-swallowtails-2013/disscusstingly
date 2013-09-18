@@ -1,0 +1,14 @@
+
+<div class="navbar">
+  <a href = '/'><h1>Disscuss{ting}.ly</h1></a>
+  <nav>
+    <ul class="pull-right">
+      <% if @user %>
+        Welcome, <a href="/user/<%=@user.name%>"><%=@user.name%></a>. <a href="/logout">Log out?</a>
+      <% else %>
+        Have an account? <a href="/login">Log in</a> or <a href="/signup">Sign up</a>
+      <% end %>
+    </ul>
+  </nav>
+</div>
+
