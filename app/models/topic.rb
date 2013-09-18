@@ -1,4 +1,4 @@
-require_relative '../../application'
+require_relative '../../config/application'
 class Topic < ActiveRecord::Base
   belongs_to :author, class_name: "User", foreign_key: "user_id"
   has_many :comments
