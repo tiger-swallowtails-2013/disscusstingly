@@ -1,5 +1,5 @@
 require 'sinatra'
-require_relative '../application'
+require_relative '../config/application'
 
 get '/' do
   @topics = Topic.all.order('updated_at DESC')
@@ -19,21 +19,25 @@ post '/new_topic' do
   redirect '/'
 end
 
-get '/:id' do
+get '/topic/:id' do
   @topic = Topic.find(params[:id])
   @comments = @topic.comments
   erb :topic
 end
 
-post '/:id' do
+post '/topic/:id' do
   c = Comment.new
   c.body = params[:body]
   c.topic = Topic.find(params[:id])
   c.save
-  redirect "/#{params[:id]}"
+  redirect "/topic/#{params[:id]}"
 end
 
 get '/login' do
   erb :login
+end
+
+get '/signup' do
+  erb :signup
 end
 

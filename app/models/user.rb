@@ -1,4 +1,4 @@
-require_relative '../../application'
+require_relative '../../config/application'
 class User < ActiveRecord::Base
   has_many :topics
   has_many :comments
