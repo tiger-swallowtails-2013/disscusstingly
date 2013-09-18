@@ -3,7 +3,8 @@
     <p><%= @topic.body %></p>
     <% @comments.each do |comment| %>
       <p>
-        COMMENT: <%= comment.body %>
+        <i>Comment by <%= comment.author.email %></i></br>
+        <%= comment.body %>
       </p>
     <% end %>
     <% if logged_in? %>
