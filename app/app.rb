@@ -1,5 +1,6 @@
 require_relative '../config/application'
 require_relative './session_helper'
+require_relative './discussion_helper'
 enable :sessions
 
 get '/' do
@@ -51,7 +52,8 @@ end
 
 get '/topic/:id' do
   @topic = Topic.find(params[:id])
-  @comments = @topic.comments
+  @comment_hash = nest_comments_for_view
+  #@comments = @topic.comments
   erb :topic
 end
 
