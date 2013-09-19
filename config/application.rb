@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'pathname'
 require 'active_record'
-require 'sqlite3' unless settings.production? 
+require 'sqlite3' unless settings.production?
 
 APP_ROOT = Pathname.new(File.expand_path(File.join(File.dirname(__FILE__), '..')))
 
@@ -14,15 +14,22 @@ Dir[APP_ROOT.join('app', 'models', '*.rb')].each do |model_file|
   autoload ActiveSupport::Inflector.camelize(filename), model_file
 end
 
-adapter = 'sqlite3'
-if settings.test?
-  DB_PATH = "#{APP_ROOT}/db/Disscusstingly_test.db"
-elsif settings.development?
-  DB_PATH = "#{APP_ROOT}/db/Disscusstingly_development.db"
-else
-  DB_PATH = ENV['DATABASE_URL']
-  adapter = 'postgresql'
-end  
+if (settings.production? == false)
+  adapter = 'sqlite3'
+  DB_PATH = settings.test? ? "#{APP_ROOT}/db/Disscusstingly_test.db" : "#{APP_ROOT}/db/Disscusstingly_development.db"
+  ActiveRecord::Base.establish_connection(:adapter => 'sqlite3',
+                                          :database => DB_PATH)
+end
 
-ActiveRecord::Base.establish_connection :adapter  => adapter,
-                                        :database => DB_PATH
+configure :production do
+  db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+
+  ActiveRecord::Base.establish_connection(
+      :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+      :host     => db.host,
+      :username => db.user,
+      :password => db.password,
+      :database => db.path[1..-1],
+      :pool => 20,
+      :encoding => 'utf8'
+  )
