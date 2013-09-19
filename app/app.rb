@@ -71,3 +71,23 @@ get '/user/:id' do
   "User Page #{params[:id]}"
 end
 
+post '/comment/:id' do
+  parent_comment = Comment.find(params[:id])
+  topic_id = parent_comment.topic_id
+  c = Comment.new
+  c.body = params[:body]
+  c.author = current_user
+  c.topic_id = parent_comment.topic_id
+  c.parent_comment = parent_comment
+  c.save
+  redirect "/topic/#{topic_id}"
+end
+
+
+get '/comment/:id' do
+  @comment = Comment.find_by_id(params[:id])
+  erb :comment
+end
+
+
+
