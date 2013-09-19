@@ -20,8 +20,12 @@ elsif settings.development?
   DB_PATH = "sqlite3:///db/Disscusstingly_development.db"
 else
   DB_PATH = ENV['DATABASE_URL']
-  adapter = 'postgresql'
+  ActiveRecord::Base.establish_connection(DB_PATH)
 end  
 
-ActiveRecord::Base.establish_connection :adapter  => adapter,
-                                        :database => DB_PATH
+unless settings.production?
+  ActiveRecord::Base.establish_connection :adapter  => adapter,
+                                          :database => DB_PATH
+end
+
+
