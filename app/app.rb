@@ -1,7 +1,7 @@
 require_relative '../config/application'
 require_relative './session_helper'
 enable :sessions
-
+ActiveRecord::Base.logger = Logger.new(STDOUT)
 get '/' do
   @topics = Topic.all.order('updated_at DESC')
   erb :home
