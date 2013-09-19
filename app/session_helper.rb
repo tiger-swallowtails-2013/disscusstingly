@@ -2,11 +2,11 @@ helpers do
 
   #login/logout methods
   def find_user
-    @user = User.find_by_email(params[:email])
+    @user = User.find_by_email(@email)
   end
 
   def check_password
-     give_token if @user.password == params[:password]
+     give_token if @user.password == @password
   end
 
   def give_token
@@ -36,8 +36,8 @@ helpers do
   #signup methods
   def signup
     u = User.new
-    u.email = params[:email]
-    u.password = params[:password]
+    u.email = @email
+    u.password = @password
     u.save
   end
 

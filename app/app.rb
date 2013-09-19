@@ -12,6 +12,8 @@ get '/login' do
 end
 
 post '/login' do
+  @email = params[:email]
+  @password = params[:password]
   login
   redirect '/'
 end
@@ -21,6 +23,8 @@ get '/signup' do
 end
 
 post '/signup' do
+  @email = params[:email]
+  @password = params[:password]
   signup
   login
   redirect '/'
