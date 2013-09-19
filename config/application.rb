@@ -1,14 +1,12 @@
 require 'sinatra'
 require 'pathname'
-require 'sqlite3'
 require 'active_record'
+require 'sqlite3' unless settings.production? 
 
 APP_ROOT = Pathname.new(File.expand_path(File.join(File.dirname(__FILE__), '..')))
 APP_NAME = APP_ROOT.basename.to_s
 
-
 set :root, APP_ROOT.join("app")
-
 
 Dir[APP_ROOT.join('app', 'models', '*.rb')].each do |model_file|
   filename = File.basename(model_file).gsub('.rb', '')
