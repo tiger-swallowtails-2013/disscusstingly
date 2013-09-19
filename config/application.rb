@@ -4,6 +4,7 @@ require 'active_record'
 require 'sqlite3' unless settings.production? 
 
 APP_ROOT = Pathname.new(File.expand_path(File.join(File.dirname(__FILE__), '..')))
+
 APP_NAME = APP_ROOT.basename.to_s
 
 set :root, APP_ROOT.join("app")
@@ -15,9 +16,9 @@ end
 
 adapter = 'sqlite3'
 if settings.test?
-  DB_PATH = "../db/Disscusstingly_test.db"
+  DB_PATH = "#{APP_ROOT}/db/Disscusstingly_test.db"
 elsif settings.development?
-  DB_PATH = "../db/Disscusstingly_development.db"
+  DB_PATH = "#{APP_ROOT}/db/Disscusstingly_development.db"
 else
   DB_PATH = ENV['DATABASE_URL']
   adapter = 'postgresql'
