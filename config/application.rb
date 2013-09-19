@@ -13,15 +13,28 @@ Dir[APP_ROOT.join('app', 'models', '*.rb')].each do |model_file|
   autoload ActiveSupport::Inflector.camelize(filename), model_file
 end
 
-adapter = 'sqlite3'
+
 if settings.test?
-  DB_PATH = "../db/Disscusstingly_test.db"
+  DB_PATH = "#{APP_ROOT}/db/Disscusstingly_test.db"
+  ActiveRecord::Base.establish_connection :adapter  => 'sqlite3',
+                                        :database => DB_PATH
 elsif settings.development?
-  DB_PATH = "../db/Disscusstingly_development.db"
+  DB_PATH = "#{APP_ROOT}/db/Disscusstingly_development.db"
+  ActiveRecord::Base.establish_connection :adapter  => 'sqlite3',
+                                        :database => DB_PATH
 else
-  DB_PATH = ENV['DATABASE_URL']
-  adapter = 'postgresql'
+  configure :production do
+	db = URI.parse(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+ 
+	ActiveRecord::Base.establish_connection(
+			:adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+			:host     => db.host,
+			:username => db.user,
+			:password => db.password,
+			:database => db.path[1..-1],
+			:encoding => 'utf8',
+			:pool => 20
+	)
+	end
 end  
 
-ActiveRecord::Base.establish_connection :adapter  => adapter,
-                                        :database => DB_PATH
