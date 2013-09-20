@@ -1,4 +1,4 @@
-require_relative '../config/application'
+require Pathname.new(File.expand_path(File.join(File.dirname(__FILE__), '/config/application')))
 require_relative './session_helper'
 enable :sessions
 ActiveRecord::Base.logger = Logger.new(STDOUT)
