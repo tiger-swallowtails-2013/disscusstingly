@@ -1,7 +1,7 @@
 require 'sinatra'
 require 'pathname'
 require 'active_record'
-require 'sinatra-activerecord'
+require 'sinatra/activerecord'
 require 'sqlite3' unless settings.production? 
 require 'pg' if settings.production?
 
