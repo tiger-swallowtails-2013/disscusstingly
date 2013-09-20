@@ -1,9 +1,12 @@
 .navbar{
+  background:yellow;
 }
 
 .pull-right{
   position:absolute;
   top:0px;
+  right:0px;
+  padding: 15px 20px 0px 0px;
 }
 
 .container {
@@ -11,9 +14,11 @@
 }
 
 .parent-comment {
-
+  padding-left: 20px;
+  padding-bottom: 10px;
 }
 
 .child-comment {
-
+  padding-left: 40px;
+  padding-bottom: 10px;
 }

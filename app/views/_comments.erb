@@ -1,16 +1,14 @@
  <% @comment_hash.each do |parent, children| %>
-      <p>
         <div class="parent-comment">
           <i>Parent comment by <%= parent.author.email %> <a href="/comment/<%= parent.id %>">reply</a></i></br>
           <%= parent.body %></br>
-        </div>
-        <div class"child-comment">     
-          <% unless children.empty? %>
+        </div>   
+          <% unless children.empty? %> 
             <% children.each do |child| %>
-              <i>Child comment by <%= child.author.email %> <a href="/comment/<%= child.id %>"><strike>reply</strike></a></i></br>
-              <%= child.body %></br>
+              <div class="child-comment"> 
+                <i>Child comment by <%= child.author.email %> <a href="/comment/<%= child.id %>"><strike>reply</strike></a></i></br>
+                <%= child.body %></br>
+              </div>
             <% end %>
           <% end %>
-        </div>
-      </p>
 <% end %>
