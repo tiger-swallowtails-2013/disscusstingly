@@ -1,6 +1,8 @@
 <% if @topic %>
-    <h2><%= @topic.title %></h2>
-    <p><%= @topic.body %></p>
+    <div class="topic">
+      <h2><%= @topic.title %></h2>
+      <p><%= @topic.body %></p>
+    </div>
 
     <% if logged_in? %>
       <form method="post">

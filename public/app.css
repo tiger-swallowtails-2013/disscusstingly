@@ -1,4 +1,9 @@
+body {
+
+}
+
 .navbar{
+  padding:0px 0px 0px 200px;
   background:yellow;
 }
 
@@ -10,7 +15,13 @@
 }
 
 .container {
+  margin:0px 200px 0px 200px;
+  padding:0px 20px 0px 20px;
+  border: dotted 1px;
+}
 
+.topic {
+  border-bottom:dotted 1px;
 }
 
 .parent-comment {
