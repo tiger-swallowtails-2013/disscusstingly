@@ -16,19 +16,17 @@ Dir[APP_ROOT.join('app', 'models', '*.rb')].each do |model_file|
 end
 
 
-# if settings.test?
-#   DB_PATH = "#{APP_ROOT}/db/Disscusstingly_test.db"
-#   ActiveRecord::Base.establish_connection :adapter  => 'sqlite3',
-#                                         :database => DB_PATH
-# elsif settings.development?
-#   DB_PATH = "#{APP_ROOT}/db/Disscusstingly_development.db"
-#   ActiveRecord::Base.establish_connection :adapter  => 'sqlite3',
-#                                         :database => DB_PATH
-# else
-#   configure :production do
-
- 
+if settings.test?
+  DB_PATH = "#{APP_ROOT}/db/Disscusstingly_test.db"
+  ActiveRecord::Base.establish_connection :adapter  => 'sqlite3',
+                                        :database => DB_PATH
+elsif settings.development?
+  DB_PATH = "#{APP_ROOT}/db/Disscusstingly_development.db"
+  ActiveRecord::Base.establish_connection :adapter  => 'sqlite3',
+                                        :database => DB_PATH
+else
+  #configure :production do
 	ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
 
-
+end
 
