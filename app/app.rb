@@ -85,7 +85,6 @@ end
 
 
 get '/comment/:id' do
-  authenticate
   @comment = Comment.find_by_id(params[:id])
   erb :comment
 end
