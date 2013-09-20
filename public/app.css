@@ -1,0 +1,50 @@
+body {
+
+}
+
+.navbar{
+  padding:0px 0px 0px 200px;
+}
+
+.pull-right{
+  position:absolute;
+  top:15px;
+  right:275px;
+}
+
+.container {
+  margin:0px 200px 0px 200px;
+  padding:0px 20px 0px 20px;
+  border: dotted 1px;
+}
+
+.home_titles {
+  padding-bottom: 10px;
+}
+
+.topic {
+  border-bottom:dotted 1px;
+}
+
+
+.parent-comment {
+  padding-left: 20px;
+  padding-bottom: 10px;
+}
+
+.child-comment {
+  padding-left: 40px;
+  padding-bottom: 10px;
+}
+
+[value='Log out']{
+  position:absolute;
+  top:-2px;
+  right:-70px;
+}
+
+[value='Add something Disscuss{ting}']{
+  position:absolute;
+  top:22px;
+  right:-70px;
+}

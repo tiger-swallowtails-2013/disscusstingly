@@ -1,12 +1,14 @@
-
 <div class="navbar">
-  <a href = '/'><h1>Disscuss{ting}.ly</h1></a>
+  <a href='/'><h1>Disscuss{ting}.ly</h1></a>
   <nav>
     <ul class="pull-right">
       <% if logged_in? %>
-        Welcome, <a href="/user/<%=current_user.id%>"><%=current_user.email%></a>. 
+        Welcome, <a href="/user/<%=current_user.id%>"><%= current_user.email %></a>. 
         <form action='/logout' method='post'>
             <input type='submit' value='Log out'/>
+        </form>
+        <form action='/new_topic'>
+            <input type='submit' value='Add something Disscuss{ting}'>
         </form>
       <% else %>
         Have an account? <a href="/login">Log in</a> or <a href="/signup">Sign up</a>
