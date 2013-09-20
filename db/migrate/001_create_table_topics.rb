@@ -4,7 +4,7 @@ class CreateTableTopics < ActiveRecord::Migration
   def change
     create_table :topics do |t|
       t.string :title
-      t.string :body
+      t.text :body
       t.belongs_to :user
 
       t.timestamps
