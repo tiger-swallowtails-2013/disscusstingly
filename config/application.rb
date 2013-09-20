@@ -16,7 +16,7 @@ Dir[APP_ROOT.join('app', 'models', '*.rb')].each do |model_file|
   filename = File.basename(model_file).gsub('.rb', '')
   autoload ActiveSupport::Inflector.camelize(filename), model_file
 end
-
+he
 # adapter = 'sqlite3'
 # if settings.test?
 #   DB_PATH = "#{APP_ROOT}/db/Disscusstingly_test.db"
