@@ -2,7 +2,8 @@ require 'sinatra'
 require 'pathname'
 require 'active_record'
 require 'sqlite3' unless settings.production? 
-
+require 'sinatra/activerecord'
+require 'sinatra/activerecord/rake'
 # APP_ROOT = Pathname.new(File.expand_path(File.join(File.dirname(__FILE__), '..')))
 
 # APP_NAME = APP_ROOT.basename.to_s
