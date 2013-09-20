@@ -1,5 +1,6 @@
 require_relative '../config/application'
 require_relative './session_helper'
+require_relative './discussion_helper'
 enable :sessions
 
 get '/' do
@@ -51,7 +52,8 @@ end
 
 get '/topic/:id' do
   @topic = Topic.find(params[:id])
-  @comments = @topic.comments
+  @comment_hash = nest_comments_for_view
+  #@comments = @topic.comments
   erb :topic
 end
 
@@ -68,4 +70,24 @@ get '/user/:id' do
   #show all posts and comments that belong to user_id
   "User Page #{params[:id]}"
 end
+
+post '/comment/:id' do
+  parent_comment = Comment.find(params[:id])
+  topic_id = parent_comment.topic_id
+  c = Comment.new
+  c.body = params[:body]
+  c.author = current_user
+  c.topic_id = parent_comment.topic_id
+  c.parent_comment = parent_comment
+  c.save
+  redirect "/topic/#{topic_id}"
+end
+
+
+get '/comment/:id' do
+  @comment = Comment.find_by_id(params[:id])
+  erb :comment
+end
+
+
 

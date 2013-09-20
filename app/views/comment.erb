@@ -1,0 +1,8 @@
+ <div class="parent-comment">
+  <i>Parent Comment by <%= @comment.author.email %></i></br>
+  <%= @comment.body %></br>
+  <form action='/comment/<%= @comment.id %>' method="post">
+    <textarea rows='4' cols='40' name="body"></textarea>
+    <input type='submit' value='Reply'>
+  </form>
+</div>
