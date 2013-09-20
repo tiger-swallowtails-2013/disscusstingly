@@ -4,14 +4,12 @@ body {
 
 .navbar{
   padding:0px 0px 0px 200px;
-  background:yellow;
 }
 
 .pull-right{
   position:absolute;
-  top:0px;
-  right:0px;
-  padding: 15px 20px 0px 0px;
+  top:15px;
+  right:275px;
 }
 
 .container {
@@ -20,9 +18,14 @@ body {
   border: dotted 1px;
 }
 
+.home_titles {
+  padding-bottom: 10px;
+}
+
 .topic {
   border-bottom:dotted 1px;
 }
+
 
 .parent-comment {
   padding-left: 20px;
@@ -32,4 +35,16 @@ body {
 .child-comment {
   padding-left: 40px;
   padding-bottom: 10px;
+}
+
+[value='Log out']{
+  position:absolute;
+  top:-2px;
+  right:-70px;
+}
+
+[value='Add something Disscuss{ting}']{
+  position:absolute;
+  top:22px;
+  right:-70px;
 }
