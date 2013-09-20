@@ -1,0 +1,19 @@
+ <% @comment_hash.each do |parent, children| %>
+      <p>
+        <div class="parent-comment">
+          <i>Parent Comment by <%= parent.author.email %> <a href="/comment/<%= parent.id %>">link</a></i></br>
+          <%= parent.body %></br>
+            <form action='/comment/<%= parent.id %>'>
+              <input type='submit' value='Reply'>
+            </form>
+        </div>
+        <div class"child-comment">     
+          <% unless children.empty? %>
+            <% children.each do |child| %>
+              <i>Child Comment by <%= child.author.email %> <a href="/comment/<%= child.id %>">link</a></i></br>
+              <%= child.body %></br>
+            <% end %>
+          <% end %>
+        </div>
+      </p>
+<% end %>

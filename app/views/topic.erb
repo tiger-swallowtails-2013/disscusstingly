@@ -1,25 +1,17 @@
 <% if @topic %>
     <h2><%= @topic.title %></h2>
     <p><%= @topic.body %></p>
-    <% @comment_hash.each do |parent, children| %>
-      <p>
-        <i>Parent Comment by <%= parent.author.email %></i></br>
-        <%= parent.body %></br>     
-        <% unless children.empty? %>
-          <% children.each do |child| %>
-            <i>Child Comment by <%= child.author.email %></i></br>
-            <%= child.body %></br>
-          <% end %>
-        <% end %>
-      </p>
-    <% end %>
+
     <% if logged_in? %>
-      <form method = "post">
-        <textarea rows = '4' cols = '40' name = 'body'></textarea>
+      <form method="post">
+        <textarea rows='4' cols='40' name='body'></textarea>
        <br>
-       <input type = 'submit'>
+       <input type='Submit' value='Comment'>
       </form>
     <% end %>
+   
+    <%= erb :_comments %>
+
 <% else %>
   <p> Topic not found. </p>
 <% end %>
