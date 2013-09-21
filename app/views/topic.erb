@@ -1,19 +1,18 @@
 <% if @topic %>
-    <h2><%= @topic.title %></h2>
-    <p><%= @topic.body %></p>
-    <% @comments.each do |comment| %>
-      <p>
-        <i>Comment by <%= comment.author.email %></i></br>
-        <%= comment.body %>
-      </p>
-    <% end %>
+    <div class="topic">
+      <h2><%= @topic.title %></h2>
+      <p><%= @topic.body %></p>
+    </div>
+
     <% if logged_in? %>
-      <form method = "post">
-        <textarea rows = '4' cols = '40' name = 'body'></textarea>
-       <br>
-       <input type = 'submit'>
+      <form method="post">
+        <textarea rows='4' cols='40' name='body'></textarea><br>
+        <input type='Submit' value='Comment'>
       </form>
     <% end %>
+   
+    <%= erb :_comments %>
+
 <% else %>
   <p> Topic not found. </p>
 <% end %>
