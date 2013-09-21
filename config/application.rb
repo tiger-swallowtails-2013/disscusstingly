@@ -1,9 +1,9 @@
 require 'sinatra'
 require 'pathname'
 require 'active_record'
-require 'sqlite3' unless settings.production? 
 require 'sinatra/activerecord'
-
+require 'sqlite3' unless settings.production? 
+require 'pg' if settings.production?
 
 APP_ROOT = Pathname.new(File.expand_path(File.join(File.dirname(__FILE__), '..')))
 
@@ -16,8 +16,10 @@ Dir[APP_ROOT.join('app', 'models', '*.rb')].each do |model_file|
   autoload ActiveSupport::Inflector.camelize(filename), model_file
 end
 
+
 if settings.production?
   set :database, ENV["DATABASE_URL"] ||= "postgresql://localhost/social_media"
+
 elsif settings.test?
   adapter = 'sqlite3'
   DB_PATH = "#{APP_ROOT}/db/Disscusstingly_test.db"
@@ -30,4 +32,5 @@ elsif settings.development?
                                         :database => DB_PATH
 end  
   
+
 
